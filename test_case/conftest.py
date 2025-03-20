@@ -14,8 +14,12 @@ def browser(request):
 @pytest.fixture()
 def setup(browser):
     global driver
+    options = webdriver.ChromeOptions()
+    options.add_argument(
+        "user-data-dir=/Users/powerplay/Library/Application Support/Google/Chrome")  # Main Chrome directory
+    options.add_argument("profile-directory=Profile 4")
     if browser=='chrome':
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=options)
     elif browser=='firefox':
         driver = webdriver.Firefox()
     elif browser=='edge':
