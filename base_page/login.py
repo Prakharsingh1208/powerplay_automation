@@ -31,11 +31,7 @@ class login:
         location = self.driver.find_element(By.XPATH,otp_location)
         location.send_keys(otp_data)
 
-    def submit_otp(self,otp_submit_button_location):
-        button = self.driver.find_element(By.XPATH,otp_submit_button_location)
-        button.click()
-        sleep(3)
-
     def get_cookie(self):
         with open("configs/cookie.pkl","wb") as file:
             pickle.dump(self.driver.get_cookies(), file)
+            sleep(3)

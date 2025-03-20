@@ -28,8 +28,5 @@ def test_login_to_get_cookie(setup_login):
     browser.enter_phone_number(phone_number_location,phone_number_data)
     browser.submit_phone_number(submit_phone_number_location)
     browser.enter_otp(otp_location,otp_data)
-    browser.submit_otp(otp_submit_button_location)
-    sleep(3)
-    sleep(10)
     browser.get_cookie()
-    sleep(100)
+

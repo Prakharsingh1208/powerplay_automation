@@ -37,3 +37,11 @@ class login_config:
     def get_otp_submit_button_location():
         button = config.get("login_config", "otp_submit_button_location")
         return button
+
+class inventory_config:
+
+    @staticmethod
+    def get_url():
+        url = config.get("inventory_config", "url")
+        return url
+
