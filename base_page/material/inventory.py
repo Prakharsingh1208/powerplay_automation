@@ -1,8 +1,11 @@
+from tkinter.tix import Select
+
 import pytest
 import allure
 from selenium import  webdriver
 from selenium.webdriver.common.by import By
 from utilities.log_generator import loggen
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -28,4 +31,37 @@ class inventory:
     def enter_material_name(self,material_name_location):
         material_name_input = WebDriverWait(self.driver,5,0.5).until(EC.presence_of_element_located((By.XPATH,material_name_location)))
         material_name_input.click()
-        material_name_input.send_keys()
+        material_name_input.send_keys("Test")
+        logs.info("Entered the material name")
+
+    @allure.step("selecting the material UOM")
+    def select_uom(self,uom_input_location):
+        option=WebDriverWait(self.driver,5,0.5).until(EC.presence_of_element_located((By.XPATH,uom_input_location)))
+        select=Select(option)
+        select.select_by_index(3)
+        logs.info("Selected UOM")
+
+    @allure.step("Clicking 'save & create new'")
+    def click_save_create_new(self,save_create_new_location):
+        button=WebDriverWait(self.driver,3,0.5).until(EC.presence_of_element_located(save_create_new_location))
+        button.click()
+        logs.info("Clicked on 'save & create'")
+
+    @allure.step("Clicking on cross button")
+    def click_on_cross_button(self,cross_button_location):
+        button = WebDriverWait(self.driver,3,0.5).until(EC.presence_of_element_located((By.XPATH,cross_button_location)))
+        button.click()
+
+    @allure.step("Validation the test case")
+    def verify_the_save_create_function(self,test_case_id,Added_materials_location):
+        WebDriverWait(self.driver,5,0.5).until(EC.presence_of_element_located(Added_materials_location))
+        items=driver.find_elements(By.XPATH,Added_materials_location)
+        t=0
+        for item in items:
+            if item.text == 'Test':
+                t=1
+                assert True
+        if t == 0:
+            assert False
+
+
