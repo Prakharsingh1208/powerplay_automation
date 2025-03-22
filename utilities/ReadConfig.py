@@ -45,3 +45,43 @@ class inventory_config:
         url = config.get("inventory_config", "url")
         return url
 
+    @staticmethod
+    def get_add_material_button_location():
+        location = config.get("inventory_config", "add_material_button_location")
+        return location
+
+    @staticmethod
+    def get_new_material_button_location():
+        location = config.get("inventory_config", "new_material_button_location")
+        return location
+
+    @staticmethod
+    def get_input_name_location():
+        location = config.get("inventory_config", "input_name_location")
+        return location
+
+    @staticmethod
+    def get_uom_input_location():
+        location = config.get("inventory_config", "uom_input_location")
+        return location
+
+    @staticmethod
+    def get_save_create_new_location():
+        location = config.get("inventory_config", "save_create_new_location")
+        return location
+
+    @staticmethod
+    def get_add_new_material_cross_button():
+        location = config.get("inventory_config", "add_new_material_cross_button")
+        return location
+
+    @staticmethod
+    def get_select_material_cross_button():
+        location = config.get("inventory_config", "select_material_cross_button")
+        return location
+
+    @staticmethod
+    def get_Added_materials_location():
+        location = config.get("inventory_config", "Added_materials_location")
+        return location
+
